@@ -1,21 +1,22 @@
-all: init test build deploy
+all: install-prerequisites build-opnsense
 
-init:
+install-prerequisites:
 	terraform -chdir=terraform init
-
-test:
 	terraform -chdir=terraform fmt -recursive
 	terraform -chdir=terraform validate
-
-build:
 	terraform -chdir=terraform plan -out=terraform.tfplan
-
-build-pfsense:
-	./scripts/build.sh -o pfsense -s3 vmimport-input-acolominas -region eu-west-1
-
-deploy:
 	terraform -chdir=terraform apply terraform.tfplan
 
-clean:
-	terraform -chdir=terraform destroy
-	rm -rf .terraform* terraform.tfplan dist/*
+build-opnsense:
+	packer init packer-opnsense.pkr.hcl
+	packer fmt -check packer-opnsense.pkr.hcl
+	packer validate packer-opnsense.pkr.hcl
+	packer build packer-opnsense.pkr.hcl
+
+clean-builds:
+	rm -tf output
+
+clean-all:
+	rm -rf output
+	terraform -chdir=terraform destroy --auto-approve
+	rm -rf terraform/.terraform* terraform/terraform.tfplan

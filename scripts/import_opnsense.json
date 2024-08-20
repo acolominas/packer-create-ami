@@ -1,0 +1,8 @@
+{
+    "Description": "OPNSense 24.7",
+    "Format": "vmdk",
+    "UserBucket": {
+        "S3Bucket": "acolominas-vmimport",
+        "S3Key": "OPNsense-24.7-disk001.vmdk"
+    }
+}
