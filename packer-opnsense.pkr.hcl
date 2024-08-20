@@ -96,6 +96,7 @@ build {
       "scripts/base.sh",
       "scripts/cloud-init.sh",
       "scripts/prepare-ec2.sh",
+      "scripts/ssm-agent-install.sh",
       "scripts/post-install.sh"
     ]
   }

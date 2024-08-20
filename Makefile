@@ -13,6 +13,12 @@ build-opnsense:
 	packer validate packer-opnsense.pkr.hcl
 	packer build packer-opnsense.pkr.hcl
 
+build-pfsense:
+	packer init packer-pfsense.pkr.hcl
+	packer fmt -check packer-pfsense.pkr.hcl
+	packer validate packer-pfsense.pkr.hcl
+	packer build packer-pfsense.pkr.hcl
+
 clean-builds:
 	rm -tf output
 
