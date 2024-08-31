@@ -11,11 +11,6 @@ packer {
 }
 
 
-variable "vm_name" {
-  type    = string
-  default = "OPNsense-24.7"
-}
-
 source "virtualbox-iso" "opnsense" {
   #BOOT_COMMAND
   #1. Boot in multi user mod
@@ -56,16 +51,17 @@ source "virtualbox-iso" "opnsense" {
     "opnsense-installer<enter><wait>",
     "<enter><wait>",
     "${local.select_install_type}<enter><wait3s>",
-    "<down><enter><wait><left><enter><wait9m>",
+    "<down><enter><wait><left><enter><wait12m>",
     "<down><enter><wait3m>",
     "root<enter><wait>opnsense<enter><wait3s>",
     "8<enter><wait>pfctl -d<enter><wait>"
   ]
   boot_wait            = "3s"
   cpus                 = 2
-  disk_size            = 8192
+  disk_size            = 10240
   guest_additions_mode = "disable"
   guest_os_type        = "FreeBSD_64"
+  headless             = true
   http_directory       = "http"
   http_port_min        = "8100"
   iso_checksum         = var.ISO_CHECKSUM
@@ -84,7 +80,7 @@ source "virtualbox-iso" "opnsense" {
     ["modifyvm", "{{ .Name }}", "--natpf1", "ssh,tcp,127.0.0.1,10022,,22"]
   ]
   virtualbox_version_file = ".vbox_version"
-  vm_name                 = "OPNsense-${var.VERSION}"
+  vm_name                 = "${var.VN_NAME}-${var.VERSION}"
 }
 
 build {
@@ -96,15 +92,20 @@ build {
       "scripts/base.sh",
       "scripts/cloud-init.sh",
       "scripts/prepare-ec2.sh",
-      "scripts/ssm-agent-install.sh",
       "scripts/post-install.sh"
     ]
   }
 
   post-processor "shell-local" {
-    inline = ["bash scripts/import_snapshot_to_ami.sh acolominas-vmimport OPNsense-24.7-disk001.vmdk OPNsense-24.7 eu-west-1"]
+    inline = ["bash utils/import_snapshot_to_ami.sh acolominas-vmimport ${var.VN_NAME} ${var.VERSION}"]
   }
 }
+
+variable "VN_NAME" {
+  type    = string
+  default = "OPNsense"
+}
+
 
 variable "VERSION" {
   type    = string

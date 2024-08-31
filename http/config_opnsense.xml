@@ -208,13 +208,12 @@
             <password>$2b$10$YRVoF4SgskIsrXOvOQjGieB9XqHPRra9R7d80B3BZdbY/j21TwBfS</password>
             <uid>0</uid>
             <expires/>
-            <authorizedkeys>c3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFCQVFDaGNXTHM0eS9MVnpobnlYZXZqSlN4QkJHV3RLV1lGUTJtZ2Zpb0VOU3hpdWVOT0ZjdkFBa083bXRrditxS0p2TTA5OS9PaTFCd2ZSOEIwRDhMWG9FeGhWTkRSMmZtSGFIZ3FVSGdVS1pyb3pLR3NJamFzMUF4MmR2MGpEUHZtdEJMOE8yWmNmTEVnMEkxQTFaajFFUzJ0ZWJaajFEdVE2bFJxYjBDa1ZLQ3dhTHhXaUk3VFVWM1ozZE1QNkcrTVNjaldFenRaZDNwcGw4KzZPbWlYM2xFd2JMMXdoeHNFOXlKeHN6dE9mTm5mK3ZUQ01lMFI5WWxsMHJnYTc2eWNHWDhuRkJ1OG1pWTFyYmhVeTAyWlhXY1gxcHVrb0hqMDlMQUd0blgydmxWVkhEY01FZUs4dkpCbDJ1a0JDSjl0SXNqbUxORk1DMmY4YXBiSE9xQi96amQgZXVnZW4ubWF5ZXJAa29udGV4dHdvcmsuZGUNCg==</authorizedkeys>
             <ipsecpsk/>
             <otp_seed/>
         </user>
         <nextuid>2000</nextuid>
         <nextgid>2000</nextgid>
-        <timezone>Europe/Berlin</timezone>
+        <timezone>Europe/Madrid</timezone>
         <time-update-interval>300</time-update-interval>
         <timeservers>0.pfsense.pool.ntp.org</timeservers>
         <webgui>
@@ -260,61 +259,25 @@
         <secondaryconsole>serial</secondaryconsole>
     </system>
     <interfaces>
-        <wan>
-            <if>em0</if>
-            <descr/>
-            <enable>1</enable>
-            <spoofmac/>
-            <ipaddr>dhcp</ipaddr>
-            <dhcphostname/>
-            <alias-address/>
-            <alias-subnet>32</alias-subnet>
-            <dhcprejectfrom/>
-            <adv_dhcp_pt_timeout/>
-            <adv_dhcp_pt_retry/>
-            <adv_dhcp_pt_select_timeout/>
-            <adv_dhcp_pt_reboot/>
-            <adv_dhcp_pt_backoff_cutoff/>
-            <adv_dhcp_pt_initial_interval/>
-            <adv_dhcp_pt_values>SavedCfg</adv_dhcp_pt_values>
-            <adv_dhcp_send_options/>
-            <adv_dhcp_request_options/>
-            <adv_dhcp_required_options/>
-            <adv_dhcp_option_modifiers/>
-            <adv_dhcp_config_advanced/>
-            <adv_dhcp_config_file_override/>
-            <adv_dhcp_config_file_override_path/>
-            <ipaddrv6>dhcp6</ipaddrv6>
-            <dhcp6-ia-pd-len>0</dhcp6-ia-pd-len>
-            <adv_dhcp6_interface_statement_send_options/>
-            <adv_dhcp6_interface_statement_request_options/>
-            <adv_dhcp6_interface_statement_information_only_enable/>
-            <adv_dhcp6_interface_statement_script/>
-            <adv_dhcp6_id_assoc_statement_address_enable/>
-            <adv_dhcp6_id_assoc_statement_address/>
-            <adv_dhcp6_id_assoc_statement_address_id/>
-            <adv_dhcp6_id_assoc_statement_address_pltime/>
-            <adv_dhcp6_id_assoc_statement_address_vltime/>
-            <adv_dhcp6_id_assoc_statement_prefix_enable/>
-            <adv_dhcp6_id_assoc_statement_prefix/>
-            <adv_dhcp6_id_assoc_statement_prefix_id/>
-            <adv_dhcp6_id_assoc_statement_prefix_pltime/>
-            <adv_dhcp6_id_assoc_statement_prefix_vltime/>
-            <adv_dhcp6_prefix_interface_statement_sla_id/>
-            <adv_dhcp6_prefix_interface_statement_sla_len/>
-            <adv_dhcp6_authentication_statement_authname/>
-            <adv_dhcp6_authentication_statement_protocol/>
-            <adv_dhcp6_authentication_statement_algorithm/>
-            <adv_dhcp6_authentication_statement_rdm/>
-            <adv_dhcp6_key_info_statement_keyname/>
-            <adv_dhcp6_key_info_statement_realm/>
-            <adv_dhcp6_key_info_statement_keyid/>
-            <adv_dhcp6_key_info_statement_secret/>
-            <adv_dhcp6_key_info_statement_expire/>
-            <adv_dhcp6_config_advanced/>
-            <adv_dhcp6_config_file_override/>
-            <adv_dhcp6_config_file_override_path/>
-        </wan>
+      <lo0>
+        <internal_dynamic>1</internal_dynamic>
+        <descr>Loopback</descr>
+        <enable>1</enable>
+        <if>lo0</if>
+        <ipaddr>127.0.0.1</ipaddr>
+        <ipaddrv6>::1</ipaddrv6>
+        <subnet>8</subnet>
+        <subnetv6>128</subnetv6>
+        <type>none</type>
+        <virtual>1</virtual>
+      </lo0>
+      <wan>
+        <if>em0</if>
+        <enable>1</enable>
+        <ipaddr>dhcp</ipaddr>
+        <ipaddrv6>dhcp6</ipaddrv6>
+        <blockbogons>1</blockbogons>
+      </wan>
     </interfaces>
     <staticroutes/>
     <dnsmasq>
