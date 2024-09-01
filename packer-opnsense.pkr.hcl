@@ -97,7 +97,7 @@ build {
   }
 
   post-processor "shell-local" {
-    inline = ["bash utils/import_snapshot_to_ami.sh acolominas-vmimport ${var.VN_NAME} ${var.VERSION}"]
+    inline = ["bash utils/import_snapshot_to_ami.sh ${var.S3_BUCKET_NAME}${var.VN_NAME} ${var.VERSION}"]
   }
 }
 
@@ -124,6 +124,12 @@ variable "ISO_CHECKSUM" {
     error_message = "The ISO checksum should be <type>:<value>. Ex: sha1:2722ee32814ee722bb565ac0dd83d9ebc1b31ed9."
   }
 }
+
+variable "S3_BUCKET_NAME" {
+  type    = string
+  default = "acolominas-vmimport"
+}
+
 
 
 local "select_install_type" {
