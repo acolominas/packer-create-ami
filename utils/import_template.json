@@ -1,0 +1,8 @@
+{
+    "Description": "MY Description",
+    "Format": "vmdk",
+    "UserBucket": {
+        "S3Bucket": "MY BUCKET",
+        "S3Key": "MY VMDK VM DISK"
+    }
+}

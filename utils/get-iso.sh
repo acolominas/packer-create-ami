@@ -2,8 +2,8 @@
 
 set -ex
 
-export PKR_VAR_VERSION="24.7" # OPNsense version
-export PKR_VAR_MIRROR="https://mirror.raiolanetworks.com" # OPNSense mirror
+PKR_VAR_VERSION="24.7" #    OPNsense version
+PKR_VAR_MIRROR="https://mirror.raiolanetworks.com" # OPNSense mirror
 
 
 echo "Download OPNSense""$PKR_VAR_VERSION"" from ""$PKR_VAR_MIRROR"
