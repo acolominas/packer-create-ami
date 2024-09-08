@@ -15,7 +15,7 @@ This repository is based on these other repositories:
 At the time of creating this repository, AWS does not allow you to directly import the Virtual Machine into an AMI because FreeBSD is not supported.  [List of supported operating systems](https://docs.aws.amazon.com/vm-import/latest/userguide/prequires.html "List of supported operating systems").
 The only way is to upload the disk to s3, convert the disk to a snapshot, and then create the AMI.
 
-During the installation process is possible that the ````<wait>```` times could change depending on the machine.
+During the installation process is possible that the ````<wait>```` times could change depending on your machine.
 
 ## Requirements
 - jq

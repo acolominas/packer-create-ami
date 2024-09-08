@@ -97,7 +97,7 @@ build {
   }
 
   post-processor "shell-local" {
-    inline = ["bash utils/import_snapshot_to_ami.sh ${var.S3_BUCKET_NAME}${var.VN_NAME} ${var.VERSION}"]
+    inline = ["bash utils/import_snapshot_to_ami.sh ${var.S3_BUCKET_NAME} ${var.VN_NAME} ${var.VERSION}"]
   }
 }
 

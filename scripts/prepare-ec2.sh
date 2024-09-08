@@ -1,7 +1,13 @@
 #!/bin/sh
 
-OS_VERSION=$(uname -r | cut -d'.' -f1)
+VERSION=$(uname -r | cut -d'.' -f1)
 ARCH=$(uname -m)
+
+
+#The following packages are not included in the official OPNsese repositories.
+#OPNsense does not recommend adding FreeBSD repositories because some problems may occur
+#The only way is to install them directly from the pkg.
+
 
 echo "Install SSM-Agent and configuring"
 #Install ssm-agent from FreeBSD repository
